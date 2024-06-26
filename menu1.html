@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منيو المطعم</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            direction: rtl;
+            text-align: right;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .menu-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .menu-item {
+            width: 200px;
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .menu-item img {
+            width: 100%;
+            height: 150px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .menu-item h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .menu-item p.price {
+            color: #d9534f;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        .details-container {
+            display: none;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            text-align: right;
+        }
+        .details-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .details-container h2 {
+            font-size: 28px;
+            color: #d9534f;
+            margin: 20px 0;
+        }
+        .details-container p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .details-container p.price {
+            color: #d9534f;
+            font-weight: bold;
+        }
+        #backToMenu {
+            background-color: #343a40;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        #backToMenu svg {
+            margin-right: 5px;
+        }
+        #backToMenu:hover {
+            background-color: #555d66;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>منيو المطعم</h1>
+    </header>
+
+    <!-- قسم المنيو -->
+    <section id="menu" class="menu-section">
+        <!-- ستتم إضافة العناصر هنا بواسطة JavaScript -->
+    </section>
+
+    <!-- قسم صفحة التفاصيل -->
+    <section id="details" class="details-container">
+        <img id="dishImage" src="" alt="صورة الطبق">
+        <h2 id="dishName"></h2>
+        <p id="dishDescription"></p>
+        <p class="price" id="dishPrice"></p>
+        <p id="dishIngredients"></p>
+        <button id="backToMenu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M11.5 1a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0V2.707l-7.854 7.853a.5.5 0 1 1-.708-.708L10.293 2H7.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 .5.5z"/>
+            </svg>
+            العودة إلى المنيو
+        </button>
+    </section>
+
+    <script>
+        const menuItems = [
+            {
+                id: 1,
+                name: 'اسم الطبق 1',
+                description: 'وصف الطبق 1',
+                price: '20 ريال',
+                image: 'path/to/your/image1.jpg',
+                ingredients: 'مكونات الطبق 1: ...'
+            },
+            {
+                id: 2,
+                name: 'اسم الطبق 2',
+                description: 'وصف الطبق 2',
+                price: '25 ريال',
+                image: 'path/to/your/image2.jpg',
+                ingredients: 'مكونات الطبق 2: ...'
+            },
+            {
+                id: 3,
+                name: 'اسم الطبق 3',
+                description: 'وصف الطبق 3',
+                price: '50 ريال',
+                image: 'path/to/your/image3.jpg',
+                ingredients: 'مكونات الطبق 3: ...'
+            },
+            {
+                id: 4,
+                name: 'اسم الطبق 4',
+                description: 'وصف الطبق 4',
+                price: '55 ريال',
+                image: 'path/to/your/image4.jpg',
+                ingredients: 'مكونات الطبق 4: ...'
+            },
+            {
+                id: 5,
+                name: 'اسم الطبق 5',
+                description: 'وصف الطبق 5',
+                price: '30 ريال',
+                image: 'path/to/your/image5.jpg',
+                ingredients: 'مكونات الطبق 5: ...'
+            },
+            {
+                id: 6,
+                name: 'اسم الطبق 6',
+                description: 'وصف الطبق 6',
+                price: '35 ريال',
+                image: 'path/to/your/image6.jpg',
+                ingredients: 'مكونات الطبق 6: ...'
+            }
+        ];
+
+        const menuSection = document.getElementById('menu');
+        const detailsSection = document.getElementById('details');
+        const backToMenuButton = document.getElementById('backToMenu');
+
+        // إضافة العناصر إلى قسم المنيو
+        menuItems.forEach(item => {
+            const menuItem = document.createElement('div');
+            menuItem.className = 'menu-item';
+            menuItem.innerHTML = `
+                <img src="${item.image}" alt="صورة ${item.name}">
+                <h3>${item.name}</h3>
+                <p class="price">السعر: ${item.price}</p>
+            `;
+            menuItem.addEventListener('click', () => {
+                showDetails(item.id);
+            });
+            menuSection.appendChild(menuItem);
+        });
+
+        // عرض تفاصيل الطبق
+        function showDetails(dishId) {
+            const dish = menuItems.find(item => item.id === dishId);
+
+            if (dish) {
+                document.getElementById('dishName').innerText = dish.name;
+                document.getElementById('dishDescription').innerText = dish.description;
+                document.getElementById('dishPrice').innerText = `السعر: ${dish.price}`;
+                document.getElementById('dishImage').src = dish.image;
+                document.getElementById('dishIngredients').innerText = dish.ingredients;
+
+                // إظهار قسم تفاصيل الطبق وإخفاء قسم المنيو
+                menuSection.style.display = 'none';
+                detailsSection.style.display = 'block';
+            }
+        }
+
+        // العودة إلى المنيو
+        backToMenuButton.addEventListener('click', () => {
+            detailsSection.style.display = 'none';
+            menuSection.style.display = 'flex';
+        });
+    </script>
+
+</body>
+</html>
